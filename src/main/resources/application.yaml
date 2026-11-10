@@ -1,0 +1,10 @@
+server:
+  port: 9000
+
+spring:
+  datasource:
+    url: jdbc:postgresql://localhost:5432/twitter
+    username: postgres
+    password: postgres
+  jackson:
+    property-naming-strategy: SNAKE_CASE
