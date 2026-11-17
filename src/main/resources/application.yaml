@@ -3,8 +3,19 @@ server:
 
 spring:
   datasource:
-    url: jdbc:postgresql://localhost:5432/twitter
-    username: postgres
-    password: postgres
+    url: ${DB_URL:jdbc:postgresql://localhost:5432/twitter}
+    username: ${DB_USERNAME:postgres}
+    password: ${DB_PASSWORD:postgres}
   jackson:
     property-naming-strategy: SNAKE_CASE
+    deserialization:
+      fail-on-unknown-properties: true
+      accept-float-as-int: false
+
+app:
+  jwt:
+    secret: ${JWT_SECRET:hw7-part2-local-development-secret-change-me}
+    issuer: ${JWT_ISSUER:user-management-service}
+    ttl: ${JWT_TTL:1h}
+  cors:
+    allowed-origins: ${CORS_ALLOWED_ORIGINS:http://localhost:3000,http://localhost:5173}
